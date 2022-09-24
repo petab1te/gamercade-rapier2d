@@ -7,6 +7,11 @@ mod game;
 use game::MyGame;
 
 pub trait Game {
+    const FPS: i32;
+    const FPS_USIZE: usize;
+    const JUMP_ARRAY: [i32; 100]; //number here is jump frames, cannot use Self in current version of rust
+    fn fall(&mut self);
+    fn jump(&mut self);
     fn init() -> Self;
     fn update(&mut self);
     fn draw(&self);

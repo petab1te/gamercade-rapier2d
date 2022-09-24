@@ -7,9 +7,14 @@ pub struct MyGame {
     frame_counter: usize,
     x_pos: i32,
     y_pos: i32,
+    jumping: bool,
+    jump_height: i32
 }
 
 impl crate::Game for MyGame {
+    const FPS: i32 = 60;
+    const FPS_USIZE: usize = 60;
+    const JUMP_ARRAY: [i32; 100] = ;
     /// Handle all of your initialization logic here.
     fn init() -> Self {
         // We can call Gamercade functions in here.
@@ -21,6 +26,29 @@ impl crate::Game for MyGame {
             frame_counter: 0,
             x_pos: (gc::width() / 2) as i32,
             y_pos: (gc::height() / 2) as i32,
+            jumping: false,
+            jump_height: 0
+        }
+    }
+    fn jump(&mut self){
+        //what if we calculate it all at once as an array, then run it? is that insane? could still be interupted
+        //let jump_time: f32 = 1.0;
+        //let jump_frames = jump_time * Self::FPS_USIZE as f32;
+        //make array of jump y coords per frame, send it
+        let mut height: [i32; Self::JUMP_FRAMES] = [0; Self::JUMP_FRAMES];
+        //need a benchmark, like .5 of jump height reached in .25 of frames
+        for i in &mut height {
+            *i = *i * 1;
+        }
+    }
+    fn fall(&mut self){
+        if self.jump_height >= 0 {
+            //take a number determine what its next number should be
+            //fall should be dynamic, unlike jump, jump is magical
+            
+        } 
+        else{
+
         }
     }
 
@@ -29,7 +57,8 @@ impl crate::Game for MyGame {
         // Print a message if the user presses the A button.
         // This defaults to the U key on the keyboard.
         if Some(true) == gc::button_a_pressed(0) {
-            gc::console_log("Pressed A.")
+            gc::console_log("Pressed A.");
+            self.jumping = true;
         }
 
         // Let's move the pixel with the arrow keys
@@ -46,6 +75,22 @@ impl crate::Game for MyGame {
         } else if Some(true) == gc::button_right_held(0) {
             self.x_pos += 1;
         }
+
+
+        let movx = 0;
+        let movy = 0;
+        // State from controls
+        if self.jumping {
+            //assures rising
+            //check if distance from this frame in direction will enter wall
+            //set movement and update state if necessary (movx/movy)
+        }
+        else {
+            //assures falling
+            //check if standing on wall
+            //if not set movement down
+        }
+
 
         // Update the frame counter to keep the animation looping
         self.frame_counter += 1;
