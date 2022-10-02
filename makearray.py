@@ -14,5 +14,9 @@ norm = [float(i)/normalizer for i in jumps]
 norm = list(map(int, norm))
 #norm = norm.reverse()
 #print(jumps)
+
+for i in range(0, jump_frames-1):
+    norm[i] = norm[i] - norm[i+1]
+    
 norm.reverse()
 print(norm)

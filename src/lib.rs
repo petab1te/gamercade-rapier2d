@@ -2,16 +2,15 @@
 // We recommend taking a look at "game.rs" and building from there.
 
 use std::mem::MaybeUninit;
-
+const JUMP_FRAMES: usize = 120;
 mod game;
 use game::MyGame;
 
 pub trait Game {
     const FPS: i32;
     const FPS_USIZE: usize;
-    const JUMP_ARRAY: [i32; 100]; //number here is jump frames, cannot use Self in current version of rust
-    fn fall(&mut self);
-    fn jump(&mut self);
+    const JUMP_ARRAY: [i32; JUMP_FRAMES]; //number here is jump frames, cannot use Self in current version of rust
+    const GRAVITY: f32;
     fn init() -> Self;
     fn update(&mut self);
     fn draw(&self);
