@@ -1,6 +1,6 @@
-# Gamercade Rust Template
+# Gamercade Rust Template with Rapier
 
-A way to get up and running with [Gamercade](https://gamercade.io) quick and easy. Comes bundled with the [gamercade_rs](https://crates.io/crates/gamercade_rs) crate.
+A way to get up and running with [Gamercade](https://gamercade.io) with Rapier quick and easy. Comes bundled with the [gamercade_rs](https://crates.io/crates/gamercade_rs) crate.
 
 This project is already configured to output the `.wasm` binaries via the `.cargo/config` file.
 
